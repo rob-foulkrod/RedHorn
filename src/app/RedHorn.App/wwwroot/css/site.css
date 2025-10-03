@@ -20,3 +20,39 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Questions Page Styles */
+.question-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #495057;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.card-header h2 {
+    font-size: 1.5rem;
+}
+
+/* Success message animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card.border-success {
+    animation: fadeInUp 0.5s ease-out;
+}
