@@ -10,7 +10,6 @@ test.describe('RedHorn site basic flows', () => {
     await expect(page.getByRole('heading', { name: 'Welcome to RedHorn' })).toBeVisible();
     await expect(page.getByText('A modern .NET 8 MVC application built with best practices')).toBeVisible();
 
-
     // Learn More navigates to Privacy
     await page.getByRole('link', { name: 'Learn More' }).click();
     await expect(page).toHaveURL(/\/(Home\/Privacy|Privacy)$/);
