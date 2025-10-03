@@ -38,17 +38,18 @@ This document provides guidance for contributors on how to use GitHub Copilot ef
    - Example: `Create_InvalidModel_ReturnsBadRequest`
 
 3. **Use Arrange-Act-Assert Pattern**:
+   but no need to add Arrange, Act And Assert comments
    ```csharp
    [Fact]
-   public void ExampleTest()
+   public void Create_InvalidModel_ReturnsBadRequest()
    {
-       // Arrange - Set up test data and dependencies
-       
-       // Act - Execute the method being tested
-       
-       // Assert - Verify the expected outcome
+
    }
    ```
+
+### Business Components will be organized in /Business folder
+### Data Components will be organized in /Data folder 
+
 
 ### Best Practices
 
@@ -67,8 +68,10 @@ This document provides guidance for contributors on how to use GitHub Copilot ef
 - "Create a responsive Razor view for [feature]"
 
 ### Running the Application
+we develop on a windows machine with .NET 8 SDK installed
+with pwsh
 
-```bash
+```pwsh
 # Build the solution
 dotnet build
 
@@ -81,23 +84,13 @@ cd src/tests/RedHorn.Tests
 dotnet test
 ```
 
-### Copilot Chat Tips
+### Git Commit messages
+- Use the conventional commit format
+  - feat: add new feature
+  - fix: bug fix
+  - docs: documentation changes
+  - style: code style changes (formatting, etc.)
+  - refactor: code refactoring without changing functionality
+  - test: adding or updating tests
+  - chore: maintenance tasks (build scripts, etc.)
 
-1. **Ask for Explanations**: Use chat to understand existing code
-   - "/explain What does this middleware do?"
-   
-2. **Request Refactoring**: Ask for improvements
-   - "/fix This method is too complex, can you refactor it?"
-   
-3. **Generate Documentation**: Create XML comments
-   - "Add XML documentation comments to this method"
-
-4. **Debug Issues**: Describe the problem
-   - "Why isn't this route working?"
-   - "This test is failing, what's wrong?"
-
-## Additional Resources
-
-- [ASP.NET Core Documentation](https://learn.microsoft.com/aspnet/core)
-- [xUnit Documentation](https://xunit.net/)
-- [GitHub Copilot Documentation](https://docs.github.com/copilot)
