@@ -6,6 +6,7 @@ This document provides guidance for contributors on how to use GitHub Copilot ef
 
 - **src/app/RedHorn.App**: Main ASP.NET Core MVC application (.NET 8)
 - **src/tests/RedHorn.Tests**: xUnit test project with references to the main app
+- **src/tests/e2e**: Playwright end-to-end tests for the web application
 
 ## Development Workflow
 
@@ -46,6 +47,28 @@ This document provides guidance for contributors on how to use GitHub Copilot ef
 
    }
    ```
+
+   #### Playwright E2E tests (guidance)
+
+   - Place Playwright tests in `src/tests/e2e` and use `playwright.config.ts` to control webServer startup and projects.
+   - Use Playwright's accessible selectors: `getByRole`, `getByLabel`, `getByText` — they are resilient to small markup changes.
+   - Use `webServer` in the Playwright config to start the app automatically during test runs (see this repository's `playwright.config.ts`).
+   - When writing E2E tests with Copilot, open the Razor view and the controller first so Copilot can echo exact headings/labels it sees.
+   - Example prompts for Copilot when writing E2E tests:
+      - "Create a Playwright test that visits /Questions/Ask, fills the form using labels from QuestionViewModel, submits, and asserts the success page shows the TempData message."
+      - "Generate a Playwright test that navigates to Home, clicks Learn More, and asserts the Privacy heading is visible."
+
+   #### Running Playwright locally
+
+   - Run all tests: `npx playwright test` (Playwright will start the app via the configured `webServer`).
+   - Run a single file: `npx playwright test src/tests/e2e/example.spec.ts -c playwright.config.ts`.
+
+   ### Best Practices for Copilot-assisted tests
+
+   - Prefer human-authored assertions for crucial strings (headings, messages) — Copilot is helpful but verify text matches view files.
+   - Add small, focused tests rather than one giant scenario — easier to maintain and faster to run.
+   - When Copilot suggests selectors, prefer `getByRole`/`getByLabel` over brittle CSS/XPath selectors.
+   - Include a short comment in tests describing intent and the exact view or controller file referenced.
 
 ### Business Components will be organized in /Business folder
 ### Data Components will be organized in /Data folder 

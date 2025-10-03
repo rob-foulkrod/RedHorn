@@ -1,0 +1,23 @@
+{
+  "name": "redhorn",
+  "version": "1.0.0",
+  "description": "A modern ASP.NET Core MVC application built with .NET 8, featuring a clean architecture and comprehensive test coverage.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rob-foulkrod/RedHorn.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rob-foulkrod/RedHorn/issues"
+  },
+  "homepage": "https://github.com/rob-foulkrod/RedHorn#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "@types/node": "^24.6.2"
+  }
+}
