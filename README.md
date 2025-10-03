@@ -59,13 +59,47 @@ cd src/tests/RedHorn.Tests
 dotnet test
 ```
 
+## End-to-end tests (Playwright)
+
+This repository includes Playwright end-to-end (E2E) tests under `src/tests/e2e` that exercise the running web application.
+
+Prerequisites:
+- Node.js (LTS recommended)
+- Playwright (browsers can be installed with `npx playwright install`)
+
+Common commands (PowerShell):
+
+```pwsh
+# Run the full Playwright suite (the configured webServer will start the app)
+npx playwright test
+
+# Run only the example e2e file
+npx playwright test src/tests/e2e/example.spec.ts -c playwright.config.ts
+
+# Run tests in Chromium only (faster local runs)
+npx playwright test -p chromium
+
+# Install Playwright browsers (first time only)
+npx playwright install
+
+# Show HTML report after a test run
+npx playwright show-report
+```
+
+Notes:
+- `playwright.config.ts` contains a `webServer` entry that runs the application with `dotnet run --project ./src/app/RedHorn.App/RedHorn.App.csproj` and waits for `http://localhost:5033`.
+- The E2E tests assert on headings, labels and messages rendered by the Razor views and use Playwright's accessibility selectors (for example `getByRole`, `getByLabel`).
+- For quick local iterations, run only the Chromium project with `-p chromium` or use the `-g` flag to filter tests by name.
+
+If you prefer a convenience npm script, I can add `"test:e2e": "playwright test"` to `package.json`.
+
 ## Development
 
 ### Running in Watch Mode
 
 For hot reload during development:
 
-```bash
+```
 cd src/app/RedHorn.App
 dotnet watch run
 ```
@@ -74,21 +108,21 @@ dotnet watch run
 
 To add a NuGet package to the main application:
 
-```bash
+```
 cd src/app/RedHorn.App
 dotnet add package <PackageName>
 ```
 
 To add a NuGet package to the test project:
 
-```bash
+```
 cd src/tests/RedHorn.Tests
 dotnet add package <PackageName>
 ```
 
 ### Creating New Controllers
 
-```bash
+```
 # Navigate to the app directory
 cd src/app/RedHorn.App
 
@@ -103,7 +137,7 @@ The project uses xUnit for testing. Tests are located in `src/tests/RedHorn.Test
 
 ### Running Specific Tests
 
-```bash
+```
 cd src/tests/RedHorn.Tests
 
 # Run a specific test
